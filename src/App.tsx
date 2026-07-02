@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Header from "./Components/Header";
+import Projects from './Components/Projects';
 import './App.css'
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
           <Header menuExpanded={menuExpanded} setMenuExpanded={setMenuExpanded}/>
         </section>
         <div className='inner-body'>
-
+          <Projects/>
         </div>
       </div>
   );
