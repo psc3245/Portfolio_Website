@@ -1,0 +1,81 @@
+.footer {
+    width: 100%;
+    box-sizing: border-box;
+
+    background: #181818;
+    color: #ddd;
+}
+
+.footerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    padding: 3rem 8% 2rem;
+}
+
+.footerBrand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.footerName {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+}
+
+.footerRole {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.footerLinks,
+.footerSocial {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+}
+
+.footerLinks a,
+.footerSocial a {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ddd;
+    transition: color 0.2s ease;
+}
+
+.footerLinks a:hover,
+.footerSocial a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footerBottom {
+    border-top: 1px solid #333;
+    padding: 1.25rem 8%;
+}
+
+.footerBottom p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #999;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .footerContent {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2.5rem 6% 2rem;
+    }
+
+    .footerLinks,
+    .footerSocial {
+        justify-content: center;
+    }
+}
