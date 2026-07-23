@@ -3,7 +3,10 @@
   --text-h: #08060d;
   --bg: #fff;
   --border: #e5e4e7;
-  --accent: #aa3bff;
+  --accent: #4f46e5;
+  --accent-dark: #4338ca;
+  --accent-light: #eef2ff;
+  --accent-soft: #a5b4fc;
 
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;

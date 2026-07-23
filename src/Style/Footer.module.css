@@ -4,6 +4,7 @@
 
     background: #181818;
     color: #ddd;
+    border-top: 4px solid var(--accent);
 }
 
 .footerContent {
@@ -50,7 +51,7 @@
 
 .footerLinks a:hover,
 .footerSocial a:hover {
-    color: white;
+    color: var(--accent-soft);
     text-decoration: underline;
 }
 

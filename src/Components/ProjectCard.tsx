@@ -5,6 +5,13 @@ interface ProjectCardProps {
   project: Project;
 }
 
+function statusBadgeClass(status: string) {
+  const normalized = status.toLowerCase();
+  if (normalized.includes("progress")) return styles.statusInProgress;
+  if (normalized.includes("completed")) return styles.statusCompleted;
+  return styles.statusNeutral;
+}
+
 function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className={styles.projectCard}>
@@ -54,7 +61,11 @@ function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className={styles.dateSection}>
-        <span className={styles.statusBadge}>{project.status}</span>
+        <span
+          className={`${styles.statusBadge} ${statusBadgeClass(project.status)}`}
+        >
+          {project.status}
+        </span>
       </div>
     </div>
   );

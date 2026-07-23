@@ -42,8 +42,21 @@
 }
 
 .textContainer h1 {
+    position: relative;
     margin: 0 0 0.35rem;
+    padding-bottom: 0.75rem;
     font-size: 2rem;
+}
+
+.textContainer h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 56px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--accent);
 }
 
 .role {
@@ -62,9 +75,11 @@
     margin-bottom: 1.25rem;
     padding: 0.4rem 0.9rem;
 
-    border: 2px solid #222;
+    border: 2px solid var(--accent);
     border-radius: 999px;
+    background: var(--accent-light);
 
+    color: var(--accent-dark);
     font-size: 0.8rem;
     font-weight: 700;
 }
@@ -90,9 +105,23 @@
 }
 
 .labelContainer h1 {
+    position: relative;
     margin: 0;
+    padding-bottom: 0.85rem;
     text-align: center;
     font-size: 2rem;
+}
+
+.labelContainer h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--accent);
 }
 
 .techGrid {
@@ -116,12 +145,13 @@
     border-radius: 18px;
     background: white;
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .techCard:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--accent);
+    box-shadow: 0 10px 24px rgba(79, 70, 229, 0.18);
 }
 
 .techIcon {

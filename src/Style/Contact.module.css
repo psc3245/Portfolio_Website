@@ -5,9 +5,23 @@
 }
 
 .container h1 {
+    position: relative;
     text-align: center;
     font-size: 3rem;
     margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.container h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--accent);
 }
 
 .subtitle {
@@ -71,7 +85,7 @@
 
 .form input:focus,
 .form textarea:focus {
-    border-color: #4d84ff;
+    border-color: var(--accent);
 }
 
 .form button {
@@ -82,7 +96,7 @@
     border: none;
     border-radius: 15px;
 
-    background: #222;
+    background: var(--accent);
     color: white;
 
     font-size: 1rem;
@@ -94,7 +108,7 @@
 }
 
 .form button:hover {
-    background: #444;
+    background: var(--accent-dark);
 }
 
 @media (max-width: 850px) {

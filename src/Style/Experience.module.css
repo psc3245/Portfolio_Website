@@ -5,9 +5,23 @@
 }
 
 .container h1 {
+    position: relative;
     text-align: center;
     font-size: 3rem;
     margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.container h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--accent);
 }
 
 .subtitle {
@@ -32,6 +46,13 @@
     border: 2px solid #222;
     border-radius: 20px;
     padding: 2rem;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.entry:hover {
+    border-color: var(--accent);
+    box-shadow: 0 10px 24px rgba(79, 70, 229, 0.12);
 }
 
 .entryHeader {

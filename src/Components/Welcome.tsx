@@ -44,8 +44,8 @@ function Welcome() {
               Open to full-time opportunities
             </span>
             <p>
-              I'm a Computer Science student at Iowa State University,
-              graduating May 2026 with a minor in Cybersecurity. Most
+              I'm a Computer Science graduate of Iowa State University (May
+              2026) with a minor in Cybersecurity. Most
               recently, I interned on the IT Application Development team at
               Magnetar Capital, where I shipped a NuGet library used across
               260+ internal repositories and worked on the firm's .NET
