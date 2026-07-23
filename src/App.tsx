@@ -1,8 +1,9 @@
-import { useState } from 'react'
 import Header from "./Components/Header";
 import Projects from './Components/Projects';
 import Welcome from "./Components/Welcome";
-import './App.css'
+import Contact from "./Components/Contact";
+import Experience from "./Components/Experience";
+import Skills from "./Components/Skills";
 
 function App() {
   return (
@@ -13,16 +14,19 @@ function App() {
       <section id="welcome">
         <Welcome />
       </section>
-      {/* <section id="about">
-        <About />
-      </section> */}
+
       <section id="projects">
         <Projects />
       </section>
-      {/* 
+      <section id="experience">
+        <Experience/>
+      </section>
+      <section id="skills">
+        <Skills/>
+      </section>
       <section id="contact">
         <Contact />
-      </section> */}
+      </section>
     </>
   );
 }

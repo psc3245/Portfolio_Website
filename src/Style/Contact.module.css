@@ -1,0 +1,118 @@
+.container {
+    width: 100%;
+    padding: 5rem 8%;
+    box-sizing: border-box;
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+    line-height: 1.7;
+}
+
+.content {
+    display: flex;
+    gap: 4rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.info {
+    flex: 1;
+    min-width: 260px;
+
+    padding: 2rem;
+
+    border: 2px solid #222;
+    border-radius: 20px;
+}
+
+.info h2 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.info p {
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.form {
+    flex: 2;
+    min-width: 350px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form input,
+.form textarea {
+    padding: 1rem;
+
+    font-size: 1rem;
+
+    border: 2px solid #222;
+    border-radius: 15px;
+
+    outline: none;
+    resize: vertical;
+}
+
+.form input:focus,
+.form textarea:focus {
+    border-color: #4d84ff;
+}
+
+.form button {
+    align-self: flex-start;
+
+    padding: 1rem 2.5rem;
+
+    border: none;
+    border-radius: 15px;
+
+    background: #222;
+    color: white;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+
+.form button:hover {
+    background: #444;
+}
+
+@media (max-width: 850px) {
+    .container {
+        padding: 3rem 6%;
+    }
+
+    .container h1 {
+        font-size: 2.25rem;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .form,
+    .info {
+        width: 100%;
+        min-width: 0;
+    }
+}
