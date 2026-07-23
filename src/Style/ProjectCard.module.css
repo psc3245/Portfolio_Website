@@ -6,10 +6,8 @@
     padding: 1.5rem;
 
     background: white;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 2px solid #222;
+    border-radius: 20px;
 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -20,7 +18,7 @@
 }
 
 .cardHeader {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #ddd;
     padding-bottom: 0.75rem;
 }
 
@@ -47,7 +45,7 @@
 .techTag {
     padding: 0.35rem 0.75rem;
 
-    background: #f3f4f6;
+    border: 2px solid #222;
     border-radius: 999px;
 
     font-size: 0.85rem;
@@ -71,29 +69,34 @@
 }
 
 .projectLink {
-    text-decoration: none;
+    text-decoration: underline;
     font-weight: 600;
-    color: #2563eb;
+    color: #222;
 
     transition: color 0.2s ease;
 }
 
 .projectLink:hover {
-    color: #1d4ed8;
+    color: #555;
 }
 
 .dateSection {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
 
     padding-top: 1rem;
-    border-top: 1px solid #eee;
-
-    font-size: 0.9rem;
-    color: #666;
+    border-top: 1px solid #ddd;
 }
 
-.dateLabel {
-    margin: 0;
+.statusBadge {
+    padding: 0.3rem 0.8rem;
+
+    border: 2px solid #222;
+    border-radius: 999px;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }

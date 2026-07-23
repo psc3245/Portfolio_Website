@@ -30,33 +30,31 @@ function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className={styles.linkSection}>
-        <a
-          href={project.github_link}
-          className={styles.projectLink}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
+        {project.github_link && (
+          <a
+            href={project.github_link}
+            className={styles.projectLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        )}
 
-        <a
-          href={project.deployment_link}
-          className={styles.projectLink}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Live Demo
-        </a>
+        {project.deployment_link && (
+          <a
+            href={project.deployment_link}
+            className={styles.projectLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Live Demo
+          </a>
+        )}
       </div>
 
       <div className={styles.dateSection}>
-        <p className={styles.dateLabel}>
-          <strong>Started:</strong> {project.start_date}
-        </p>
-
-        <p className={styles.dateLabel}>
-          <strong>Completed:</strong> {project.finish_date}
-        </p>
+        <span className={styles.statusBadge}>{project.status}</span>
       </div>
     </div>
   );

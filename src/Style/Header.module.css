@@ -1,4 +1,8 @@
 .row {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,16 +13,72 @@
     padding: 0 2rem;
     background: white;
     border-bottom: 1px solid #ddd;
+
+    gap: 1.5rem;
+    box-sizing: border-box;
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .btn {
-    width: 25vw;
     text-align: center;
     cursor: pointer;
-}
 
-.btn p {
     font-weight: bold;
     font-size: 18px;
     color: black;
+
+    transition: color 0.2s ease;
+}
+
+.btn:hover {
+    color: #555;
+}
+
+.resumeButton {
+    flex-shrink: 0;
+
+    padding: 0.6rem 1.25rem;
+
+    border: 2px solid #222;
+    border-radius: 10px;
+
+    background: #222;
+    color: white;
+
+    font-weight: bold;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    cursor: pointer;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.resumeButton:hover {
+    background: white;
+    color: #222;
+}
+
+@media (max-width: 700px) {
+    .row {
+        position: static;
+        height: auto;
+        padding: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navLinks {
+        justify-content: center;
+        gap: 1rem 1.25rem;
+    }
+
+    .btn {
+        font-size: 15px;
+    }
 }
