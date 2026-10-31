@@ -66,6 +66,18 @@ function ProjectCard({ project }: ProjectCardProps) {
         >
           {project.status}
         </span>
+        {project.last_pushed_at && (
+          <span className={styles.githubActivity}>
+            Pushed{" "}
+            <time dateTime={project.last_pushed_at}>
+              {new Intl.DateTimeFormat(undefined, {
+                dateStyle: "medium",
+              }).format(new Date(project.last_pushed_at))}
+            </time>
+            {project.stargazers_count !== undefined &&
+              ` · ${project.stargazers_count} stars`}
+          </span>
+        )}
       </div>
     </div>
   );

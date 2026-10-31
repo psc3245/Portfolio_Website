@@ -1,77 +1,82 @@
+import { useEffect, useState } from "react";
 import styles from "../Style/Projects.module.css";
+import { projects as curatedProjects } from "../data/projects";
+import { addGitHubActivity, fetchGitHubRepositories } from "../services/github";
+import type { Project } from "../types";
 import ProjectCard from "./ProjectCard";
 
-const projects = [
-  {
-    name: "PredictionMarketArbAlert",
-    technologies: ["Python"],
-    description:
-      "A Python service that identifies cross-platform arbitrage opportunities between Kalshi and Polymarket prediction markets, continuously discovering matched market pairs and alerting when price discrepancies create a risk-free profit opportunity.",
-    github_link: "https://github.com/psc3245/PredictionMarketArbAlert",
-    deployment_link: "",
-    status: "In Progress",
-  },
-  {
-    name: "AI-Driven Stock Market Simulation Platform",
-    technologies: ["C#", "SQL", "React.js", "Python", "LLMs"],
-    description:
-      "Full-stack platform simulating stock and crypto trading with historical and live market data, letting users execute virtual trades risk-free. Integrated an AI assistant powered by open-source LLMs to summarize market conditions, explain trading concepts, and suggest simulated trades, backed by a data ingestion pipeline that feeds market data into the LLM workflow.",
-    github_link: "https://github.com/psc3245/Senior-Project",
-    deployment_link: "",
-    status: "Completed",
-  },
-  {
-    name: "Habit Tracker WebApp",
-    technologies: ["React.js", "Express", "Node.js"],
-    description:
-      "Full-stack habit-tracking platform built with a modular Controller-Service-Repository architecture. Features a custom RESTful API for CRUD operations on user habits and a unified data schema tracking streaks, consistency, and completion history.",
-    github_link: "https://github.com/psc3245/Habit-Tracker",
-    deployment_link: "",
-    status: "Completed",
-  },
-  {
-    name: "Uni Trade: Campus Marketplace",
-    technologies: ["Java", "MySQL", "Spring Boot"],
-    description:
-      "Full-stack campus marketplace application. Led backend development with Spring Boot, Java, and MySQL, optimizing database queries for a 30% performance boost, and integrated real-time chat and notifications via WebSockets.",
-    github_link: "",
-    deployment_link: "",
-    status: "Full-Stack Application",
-  },
-  {
-    name: "ComS 319 – Construction of User Interfaces",
-    technologies: ["JavaScript"],
-    description:
-      "Coursework for Iowa State's Construction of User Interfaces, covering UI architecture, event-driven design, and object-oriented UI construction.",
-    github_link: "https://github.com/psc3245/ComS319",
-    deployment_link: "",
-    status: "Coursework",
-  },
-  {
-    name: "ComS 352 – Introduction to Operating Systems",
-    technologies: ["C"],
-    description:
-      "Coursework for Iowa State's Introduction to Operating Systems, covering process and thread management, memory management, and low-level systems programming.",
-    github_link: "https://github.com/psc3245/coms352",
-    deployment_link: "",
-    status: "Coursework",
-  },
-];
-
 function Projects() {
+  const [projects, setProjects] = useState<Project[]>(curatedProjects);
+  const [isLoading, setIsLoading] = useState(true);
+  const [syncError, setSyncError] = useState<string | null>(null);
+  const [lastSyncedAt, setLastSyncedAt] = useState<Date | null>(null);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchGitHubRepositories(controller.signal)
+      .then((repositories) => {
+        if (!controller.signal.aborted) {
+          setProjects(addGitHubActivity(curatedProjects, repositories));
+          setLastSyncedAt(new Date());
+          setSyncError(null);
+        }
+      })
+      .catch((error: unknown) => {
+        if (!controller.signal.aborted) {
+          setSyncError(
+            error instanceof Error
+              ? error.message
+              : "An unexpected error occurred while loading GitHub activity.",
+          );
+        }
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setIsLoading(false);
+      });
+
+    return () => controller.abort();
+  }, [refreshKey]);
+
+  const refreshProjects = () => {
+    setIsLoading(true);
+    setSyncError(null);
+    setRefreshKey((key) => key + 1);
+  };
+
   return (
     <section className={styles.projectsSection}>
       <div className={styles.projectsHeader}>
         <h1 className={styles.projectsTitle}>Projects and Coursework</h1>
 
         <a
-          href="https://github.com/psc3245?tab=repositories"
+          href="https://github.com/psc3245"
           className={styles.seeMoreButton}
           target="_blank"
           rel="noopener noreferrer"
         >
-          See More
+          More on GitHub
         </a>
+      </div>
+
+      <div className={styles.githubSync} aria-live="polite">
+        <p>
+          {isLoading
+            ? "Loading live GitHub activity…"
+            : syncError
+              ? `GitHub activity could not be refreshed: ${syncError}`
+              : lastSyncedAt
+                ? `Live GitHub activity · refreshed ${lastSyncedAt.toLocaleTimeString()}`
+                : "Showing saved project details."}
+        </p>
+        <button
+          className={styles.refreshButton}
+          type="button"
+          onClick={refreshProjects}
+          disabled={isLoading}
+        >
+          {isLoading ? "Refreshing…" : "Refresh"}
+        </button>
       </div>
 
       <p className={styles.sourceLink}>

@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "portfolio-sync:setup": "node scripts/portfolio-sync.mjs setup",
+    "portfolio-sync:run": "node scripts/portfolio-sync.mjs run"
   },
   "dependencies": {
     "react": "^19.2.7",
