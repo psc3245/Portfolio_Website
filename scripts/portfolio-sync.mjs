@@ -565,17 +565,25 @@ async function waitForRequiredChecks(config, prNumber) {
       "--repo",
       portfolioRepository,
       "--required",
-      "--json",
-      "name,bucket",
     ], { allowFailure: true });
-    const requiredChecks = JSON.parse(checks.stdout);
-    if (requiredChecks.length === 0) {
+    const output = [checks.stdout, checks.stderr].filter(Boolean).join("\n");
+    const requiredChecks = output
+      .split(/\r?\n/)
+      .filter((line) => line.includes("\t"))
+      .map((line) => {
+        const [name, bucket] = line.split("\t");
+        return { name, bucket: bucket?.toLowerCase() };
+      });
+    if (requiredChecks.length === 0 && /no required checks reported/i.test(output)) {
       emptyAttempts += 1;
       if (emptyAttempts >= 4) {
         throw new Error("No required checks appeared; leaving the PR open without merging.");
       }
       await new Promise((resolve) => setTimeout(resolve, 15_000));
       continue;
+    }
+    if (requiredChecks.length === 0) {
+      throw new Error(`Could not read required checks; leaving the PR open. ${output}`);
     }
     const failed = requiredChecks.filter((check) =>
       ["fail", "cancel", "skipping"].includes(check.bucket),
