@@ -19,9 +19,11 @@ repository paths entered during setup.
    technologies; do not request or inspect other repository files.
 3. Keep existing detailed descriptions when accurate. Do not invent project
    details to fill missing README content.
-4. Update the project entries to match the supplied repository list. Use
-   repository names, GitHub links, descriptions, and technologies supported by
-   repository evidence or the user's instructions.
+4. Update entries for the supplied repositories. Use repository names, GitHub
+   links, descriptions, and technologies supported by repository evidence or
+   the user's instructions.
+   Preserve existing entries that are not represented in the supplied
+   repositories; do not remove or rewrite those entries.
    If a repository has no usable documentation, keep any existing accurate
    description; for a new entry, use a neutral note that its details are not
    documented rather than guessing.

@@ -24,18 +24,19 @@ after required GitHub checks pass. Set it up separately on each computer:
    project repository checkout path when prompted.
 
 The setup checks tool versions, Copilot CLI authentication, GitHub CLI
-authentication and portfolio write access, and GitHub SSH access for every
-project checkout. Add only repositories you are comfortable describing on a
-public website. The scheduled agent sends README and package/language manifest
-excerpts to Copilot; it does not send source-code files. It installs a daily
-schedule at the local time you choose.
+authentication and portfolio write access, and GitHub access for every project
+checkout. GitHub repositories may use SSH or HTTPS remotes; for HTTPS, setup
+configures GitHub CLI as Git's credential helper. Add only repositories you
+are comfortable describing on a public website. The scheduled agent sends
+README and package/language manifest excerpts to Copilot; it does not send
+source-code files. It installs a daily schedule at the local time you choose.
 Repository paths and tool locations are saved in the computer user's config
 directory, not in the repository. The computer must be on and able to connect
 to GitHub at the scheduled time. Linux and macOS use the user's cron schedule;
 Windows uses Task Scheduler. Run setup again on each computer to configure its
-paths and schedule, or to change either later.
-If an SSH key depends on a running SSH agent, make sure that agent is available
-to the scheduled process as well as the interactive setup shell.
+paths and schedule, or to change either later. If an SSH key depends on a
+running SSH agent, make sure that agent is available to the scheduled process
+as well as the interactive setup shell.
 
 The updater stops without merging if a repository has uncommitted changes,
 validation fails, required checks fail or time out, or no required checks are
