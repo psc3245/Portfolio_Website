@@ -51,21 +51,12 @@ export const projects: Project[] = [
   },
   {
     name: "Habit Tracker WebApp",
-    technologies: ["React", "Vite", "CSS"],
+    technologies: ["React", "Vite", "CSS", "Node.js", "Express", "PostgreSQL", "Zod"],
     description:
-      "A React single-page app for tracking daily habits, with a notebook-style layout, habit statistics, and user profile management.",
+      "A full-stack habit tracker pairing a React and Vite single-page app with a Node.js and Express REST API backed by PostgreSQL. It features a notebook-style layout, habit tracking and statistics, profile management, and persistent habit, completion, and settings data.",
     github_link: "https://github.com/psc3245/Habit-Tracker",
     deployment_link: "",
     status: "Completed",
-  },
-  {
-    name: "Habit Tracker Backend",
-    technologies: ["JavaScript", "Node.js", "Express", "PostgreSQL", "Zod"],
-    description:
-      "A Node.js and Express REST API backed by PostgreSQL, organized into routes, controllers, services, and repositories.",
-    github_link: "https://github.com/psc3245/Habit-Tracker-Backend",
-    deployment_link: "",
-    status: "Project",
   },
   {
     name: "Portfolio Website",

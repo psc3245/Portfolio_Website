@@ -24,6 +24,12 @@ repository paths entered during setup.
    the user's instructions.
    Preserve existing entries that are not represented in the supplied
    repositories; do not remove or rewrite those entries.
+   Treat `psc3245/Habit-Tracker` and
+   `psc3245/Habit-Tracker-Backend` as one full-stack Habit Tracker project.
+   When both are supplied, create or update one `Habit Tracker WebApp` entry,
+   use the frontend repository URL as its GitHub link, combine verified
+   frontend and backend technologies and features, and do not create a separate
+   backend card.
    If a repository has no usable documentation, keep any existing accurate
    description; for a new entry, use a neutral note that its details are not
    documented rather than guessing.
